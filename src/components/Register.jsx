@@ -1,6 +1,8 @@
 /* TODO - add your code to create a functional React component that renders a registration form */
 import { useState } from "react"
 
+const API_URL = "https://fsa-book-buddy-b6e748d1380d.herokuapp.com/api/";
+
 function Register({setToken}) {
   const [userFirstName, setUserFirstName] = useState('');
   const [userLastName, setUserLastName] = useState('');
@@ -24,7 +26,7 @@ function Register({setToken}) {
         setError("Your password must contain 8 or more characters");
         setToken(null);
       } else {
-        const response = await fetch('/api/users/register', {
+        const response = await fetch(`${API_URL}/users/register`, {
           method: 'POST',
           headers: { 
             "Content-Type": "application/json" 
