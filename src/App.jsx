@@ -25,14 +25,14 @@ function App() {
         <p>Don't forget to set up React Router to navigate between the different views of your single page application!</p>
         */}
 
-        <Navigations />
+        <Navigations token={token}/>
       </div>
       <div className='mainSection'>
         <Routes>
           <Route path='/books' element={<Books />} />
           <Route path='/books/:id' element={<SingleBook />} />
           <Route path='/login' element={<Login />} />
-          <Route path='/register' element={<Register />} />
+          <Route path='/register' element={<Register setToken={setToken}/>} />
           <Route path='/account' element={<Account />} />
         </Routes>
       </div>
