@@ -31,7 +31,7 @@ function App() {
         <Routes>
           <Route path='/books' element={<Books />} />
           <Route path='/books/:id' element={<SingleBook />} />
-          <Route path='/login' element={<Login />} />
+          <Route path='/login' element={<Login setToken={setToken}/>} />
           <Route path='/register' element={<Register setToken={setToken}/>} />
           <Route path='/account' element={<Account />} />
         </Routes>
