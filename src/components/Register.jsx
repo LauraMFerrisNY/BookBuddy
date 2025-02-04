@@ -3,7 +3,7 @@ import { useState } from "react"
 
 const API_URL = "https://fsa-book-buddy-b6e748d1380d.herokuapp.com/api/";
 
-function Register({setToken}) {
+function Register( {setToken} ) {
   const [userFirstName, setUserFirstName] = useState('');
   const [userLastName, setUserLastName] = useState('');
   const [userEmail, setUserEmail] = useState('');

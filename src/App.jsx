@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Routes, Route } from "react-router-dom";
 import bookLogo from './assets/books.png'
 import Navigations from './components/Navigations';
+import GreetingPage from './components/GreetingPage';
 import Books from './components/Books';
 import SingleBook from './components/SingleBook';
 import Login from './components/Login';
@@ -29,6 +30,7 @@ function App() {
       </div>
       <div className='mainSection'>
         <Routes>
+          <Route path='/' element={<GreetingPage />} />
           <Route path='/books' element={<Books />} />
           <Route path='/books/:id' element={<SingleBook />} />
           <Route path='/login' element={<Login setToken={setToken}/>} />
