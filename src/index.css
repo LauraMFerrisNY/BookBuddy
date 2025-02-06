@@ -6,8 +6,8 @@ body {
 }
 
 #logo-image {
-  width: 30px;
-  margin-right: 10px;
+  width: 1.5em;
+  margin-right: .5em;
 }
 
 .topNavBar {
@@ -53,4 +53,21 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
+}
+
+.single_book_content {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  margin: 2em;
+}
+
+.single_book_cover {
+  max-height: 50em;
+}
+
+.single_book_info {
+  margin: 1em;
+  max-width: 60em;
 }
