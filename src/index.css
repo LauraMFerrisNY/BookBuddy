@@ -10,4 +10,20 @@ body {
   margin-right: 10px;
 }
 
-/* Add your own custom styles here */
+.topNavBar {
+  display: flex;
+  justify-content: space-between;
+}
+
+.site_title {
+  padding-left: .5em;
+}
+
+.nav_bar_links {
+  padding-right: 1em;
+  align-content: center;
+}
+
+.nav_bar_links > a {
+  margin: .5em;
+}
