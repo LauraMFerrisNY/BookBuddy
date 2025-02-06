@@ -27,3 +27,30 @@ body {
 .nav_bar_links > a {
   margin: .5em;
 }
+
+.book_content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  width: 100vw;
+}
+
+.book_card {
+  display: flex;
+  margin: 1em;
+  width: 45em;
+}
+.book_card:hover {
+  cursor:pointer
+}
+
+.book_card > img {
+  max-height: 20em;
+}
+
+.book_card_info {
+  margin: 1em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
