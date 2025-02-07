@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Routes, Route } from "react-router-dom";
 import bookLogo from './assets/books.png'
 import Navigations from './components/Navigations';
@@ -10,7 +10,15 @@ import Register from './components/Register';
 import Account from './components/Account';
 
 function App() {
-  const [token, setToken] = useState(null)
+  const [token, setToken] = useState(null);
+
+  useEffect(() => {
+    const storedToken = localStorage.getItem('token');
+
+    if (storedToken) {
+        setToken(storedToken);
+    }
+});
 
   return (
     <>
@@ -35,7 +43,7 @@ function App() {
           <Route path='/books/:id' element={<SingleBook />} />
           <Route path='/login' element={<Login setToken={setToken}/>} />
           <Route path='/register' element={<Register setToken={setToken}/>} />
-          <Route path='/account' element={<Account />} />
+          <Route path='/account' element={<Account setToken={setToken} token={token}/>} />
         </Routes>
       </div>
 
