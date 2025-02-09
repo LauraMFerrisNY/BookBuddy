@@ -10,7 +10,7 @@ import Register from './components/Register';
 import Account from './components/Account';
 
 function App() {
-  const [token, setToken] = useState(null);
+  const [token, setToken] = useState(localStorage.getItem('token') || null);
 
   useEffect(() => {
     const storedToken = localStorage.getItem('token');
@@ -34,16 +34,16 @@ function App() {
         <p>Don't forget to set up React Router to navigate between the different views of your single page application!</p>
         */}
 
-        <Navigations />
+        <Navigations token={token}/>
       </div>
       <div className='mainSection'>
         <Routes>
           <Route path='/' element={<GreetingPage />} />
           <Route path='/books' element={<Books />} />
-          <Route path='/books/:id' element={<SingleBook />} />
+          <Route path='/books/:id' element={<SingleBook token={token} />} />
           <Route path='/login' element={<Login setToken={setToken}/>} />
-          <Route path='/register' element={<Register setToken={setToken}/>} />
-          <Route path='/account' element={<Account setToken={setToken} token={token}/>} />
+          <Route path='/register' element={<Register setToken={setToken} />} />
+          <Route path='/account' element={<Account setToken={setToken} token={token} />} />
         </Routes>
       </div>
 

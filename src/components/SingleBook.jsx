@@ -2,8 +2,9 @@
 import { useState, useEffect } from "react"
 import { useNavigate, useParams } from "react-router-dom";
 import fetchSingleBook from "../API/fetchSingleBook";
+import checkoutBook from "../API/checkoutBook";
 
-function SingleBook() {
+function SingleBook({ token }) {
   let { id } = useParams();
   const [book, setBook] = useState([])
   const navigate = useNavigate(); 
@@ -11,14 +12,26 @@ function SingleBook() {
   useEffect(()=>{
     try {
       async function gatherBook() {
-        const myBook = await fetchSingleBook(id);
-        setBook(myBook);
+        const singleBook = await fetchSingleBook(id);
+        setBook(singleBook);
       }
       gatherBook();
     } catch (e) {
       console.log("Unable to collect book");
     }
   },[])
+
+  async function  handleCheckoutRequest() {
+    try {
+      if (token) {
+        await checkoutBook(token, id);
+        const singleBook = await fetchSingleBook(id);
+        setBook(singleBook);
+      }
+    } catch (e) {
+      console.log("Unable to checkout book");
+    }
+  }
 
   return (
       <>
@@ -32,6 +45,9 @@ function SingleBook() {
                     <h3>Description</h3>
                     <p>{book.description}</p>
                   </div>
+                  {token && <div>
+                    {book.available && <button onClick={()=> handleCheckoutRequest()}>Checkout Book</button>}
+                  </div>}
                   <button id="return"  onClick={()=> navigate(`/books`)}>Back to Book Collection</button>
               </div>
           </div>

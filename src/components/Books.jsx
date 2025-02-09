@@ -2,6 +2,7 @@
 import { useState, useEffect } from "react"
 import { useNavigate } from "react-router-dom";
 import fetchAllBooks from "../API/fetchAllBooks"
+import BookSearch from "./BookSearch";
 
 function Books() {
   const [books, setBooks] = useState([]);
@@ -21,7 +22,10 @@ function Books() {
   
   return (
     <>
-      <h2>Book Collection</h2>
+      <div className="book_collection_heading">
+        <h2>Book Collection</h2>
+        <BookSearch setBooks={setBooks} />
+      </div>
       <div className="book_content">
         {books && books.map((book)=>{
           return (
