@@ -1,6 +1,5 @@
 import { useState } from "react";
 import fetchAllBooks from "../API/fetchAllBooks";
-import sortAllBooks from "../API/sortAllBooks";
 
 function BookSearch({ setBooks }) {
   const [searchInput, setSearchInput] = useState('');
@@ -34,8 +33,8 @@ function BookSearch({ setBooks }) {
    return (
     <>
       <form className='search_form' onSubmit={handleSubmit}>
-        <label className="searchBar">
-          Search: 
+        <label className="search_bar">
+          Book Search: 
           <input type="text" value ={searchInput} onChange={(e) => setSearchInput(e.target.value)} />
         </label>
         <label className='search_button'>

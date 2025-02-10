@@ -22,34 +22,23 @@ function App() {
 
   return (
     <>
-    <div className='pageContent'>
-      <div className='topNavBar'>
-        <h1 className='site_title'><img id='logo-image' src={bookLogo}/>Library App</h1>
-      
-        {/*
-        <p>Complete the React components needed to allow users to browse a library catalog, check out books, review their account, and return books that they've finished reading.</p>
-
-        <p>You may need to use the `token` in this top-level component in other components that need to know if a user has logged in or not.</p>
-
-        <p>Don't forget to set up React Router to navigate between the different views of your single page application!</p>
-        */}
-
-        <Navigations token={token}/>
+      <div className='page_content'>
+        <div className='top_nav_bar'>
+          <h1 className='site_title'><img id='logo-image' src={bookLogo}/>Laura's Library</h1>
+          <Navigations token={token}/>
+        </div>
+        
+        <div className='main_section'>
+          <Routes>
+            <Route path='/' element={<GreetingPage />} />
+            <Route path='/books' element={<Books />} />
+            <Route path='/books/:id' element={<SingleBook token={token} />} />
+            <Route path='/login' element={<Login setToken={setToken}/>} />
+            <Route path='/register' element={<Register setToken={setToken} />} />
+            <Route path='/account' element={<Account setToken={setToken} token={token} />} />
+          </Routes>
+        </div>
       </div>
-      <div className='mainSection'>
-        <Routes>
-          <Route path='/' element={<GreetingPage />} />
-          <Route path='/books' element={<Books />} />
-          <Route path='/books/:id' element={<SingleBook token={token} />} />
-          <Route path='/login' element={<Login setToken={setToken}/>} />
-          <Route path='/register' element={<Register setToken={setToken} />} />
-          <Route path='/account' element={<Account setToken={setToken} token={token} />} />
-        </Routes>
-      </div>
-
-    </div>
-    
-      
     </>
   )
 }

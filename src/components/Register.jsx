@@ -1,4 +1,3 @@
-/* TODO - add your code to create a functional React component that renders a registration form */
 import { useState } from "react"
 import { useNavigate } from "react-router-dom";
 
@@ -40,7 +39,6 @@ function Register( {setToken} ) {
             password: userPassword})
         });
         const result = await response.json();
-        console.log(result);
         setError(null);
         if (result.token) {
           setToken(result.token);
@@ -58,9 +56,7 @@ function Register( {setToken} ) {
     <>
       <h2>Register for a Library Account</h2>
 
-      {error && <p className='submission_error'>{error}</p>}
-
-      <form onSubmit={handleSubmit}>
+      <form className="registration_form" onSubmit={handleSubmit}>
         <label className='first_name_form'>
           First Name: 
           <input type='text' value={userFirstName} onChange={(e) => setUserFirstName(e.target.value)}/>
@@ -81,6 +77,7 @@ function Register( {setToken} ) {
           <button>Submit</button>
         </label>
       </form>
+      {error && <p className='submission_error'>{error}</p>}
     </>
   )
 }
