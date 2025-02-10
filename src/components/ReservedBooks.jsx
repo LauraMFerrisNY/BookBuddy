@@ -36,8 +36,8 @@ function ReservedBooks({token}) {
 
   return (
     <>
+      {!reservedBooks && <p>You currently have no books reserved.</p>}
       <div className="book_reservations">
-        {!reservedBooks && <p>You currently have no books reserved.</p>}
         {reservedBooks && reservedBooks.map((bookReservation)=>{
           return (
           <div key={bookReservation.id} className="reservation_card">

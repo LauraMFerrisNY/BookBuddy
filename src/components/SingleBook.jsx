@@ -1,4 +1,3 @@
-/* TODO - add your code to create a functional React component that renders details for a single book. Fetch the book data from the provided API. You may consider conditionally rendering a 'Checkout' button for logged in users. */
 import { useState, useEffect } from "react"
 import { useNavigate, useParams } from "react-router-dom";
 import fetchSingleBook from "../API/fetchSingleBook";
@@ -17,7 +16,7 @@ function SingleBook({ token }) {
       }
       gatherBook();
     } catch (e) {
-      console.log("Unable to collect book");
+      console.error("Unable to collect book",e);
     }
   },[])
 
@@ -29,13 +28,13 @@ function SingleBook({ token }) {
         setBook(singleBook);
       }
     } catch (e) {
-      console.log("Unable to checkout book");
+      console.error("Unable to checkout book",e);
     }
   }
 
   return (
       <>
-          <h1 className="single_book_header">{book.title}</h1>
+          <h2 className="single_book_header">{book.title}</h2>
           <div className="single_book_content">
               <img src={book.coverimage} alt={book.title} className="single_book_cover"/>
               <div className="single_book_info">
@@ -45,7 +44,7 @@ function SingleBook({ token }) {
                     <h3>Description</h3>
                     <p>{book.description}</p>
                   </div>
-                  {token && <div>
+                  {token && <div className="checkout_button">
                     {book.available && <button onClick={()=> handleCheckoutRequest()}>Checkout Book</button>}
                   </div>}
                   <button id="return"  onClick={()=> navigate(`/books`)}>Back to Book Collection</button>

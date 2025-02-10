@@ -1,4 +1,3 @@
-/* TODO - add your code to create a functional React component that renders account details for a logged in user. Fetch the account data from the provided API. You may consider conditionally rendering a message for other users that prompts them to log in or create an account.  */
 import { useState, useEffect } from "react"
 import { useNavigate } from "react-router-dom";
 import ReservedBooks from "./ReservedBooks";
@@ -34,17 +33,20 @@ function Account({ setToken, token }) {
 
   return (
     <>
-      <h2>My Account</h2>
+      <div className="account_header">
+        <h2>My Account</h2>
+
+        {token && <div><button onClick={handleClick}>Log Out</button></div>}
+      </div>
 
       {!token && (<h3>You must be logged in to see your account.</h3>)}
       {token && (
-        <>
+        <div className="account_content">
           <h3>Name: {myFirstName} {myLastName}</h3>
           <h3>Email: {myEmail}</h3>
           <h3>Books Checked Out:</h3>
           <ReservedBooks token={token} />
-          <button onClick={handleClick}>Log Out</button>
-        </>
+        </div>
       )}
     </>
   )
