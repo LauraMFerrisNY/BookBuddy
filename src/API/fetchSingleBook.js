@@ -8,7 +8,7 @@ async function fetchSingleBook(bookId) {
       },
     });
     const myBook = await response.json();
-    return myBook.book;
+    return myBook;
   } catch (e) {
     console.error("Unable to collect book.", e);
   }

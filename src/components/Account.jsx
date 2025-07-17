@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react"
 import { useNavigate } from "react-router-dom";
 import ReservedBooks from "./ReservedBooks";
-import fetchAccuntInfo from "../API/fetchAccountInfo";
+import fetchAccountInfo from "../API/fetchAccountInfo";
 
 function Account({ setToken, token }) {
   const [myFirstName, setMyFirstName] = useState(null);
@@ -13,7 +13,7 @@ function Account({ setToken, token }) {
     try {
       if (token) {
         async function gatherAccountInfo() {
-          const myInfo = await fetchAccuntInfo(token);
+          const myInfo = await fetchAccountInfo(token);
           setMyFirstName(myInfo.firstname);
           setMyLastName(myInfo.lastname);
           setMyEmail(myInfo.email);

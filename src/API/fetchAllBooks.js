@@ -9,8 +9,8 @@ async function fetchAllBooks() {
       },
     });
     const temp = await response.json();
-    const myBooks = temp.books;
-    const sortedBooks = await sortAllBooks(myBooks);
+    console.log("Full API response:", temp);
+    const sortedBooks = await sortAllBooks(temp);
     return sortedBooks;
   } catch (e) {
     console.error("Unable to gather books.", e);
