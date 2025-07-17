@@ -10,8 +10,7 @@ async function fetchReservations(token) {
       },
     });
     const temp = await response.json();
-    const reservations = await temp.reservation;
-    const sortedReservations = await sortAllBooks(reservations);
+    const sortedReservations = await sortAllBooks(temp);
     return sortedReservations;
   } catch (e) {
     console.error("Unable to gather books.", e);
